@@ -66,6 +66,32 @@
             font-family: monospace; /* Use monospace font for chords */
             font-size: 0.95em;
         }
+
+        /* --- Mobile Styles --- */
+        @media (max-width: 600px) {
+            body {
+                margin: 1em; /* Reduce body margin */
+            }
+            .container {
+                padding: 1em; /* Reduce container padding */
+            }
+            h1 {
+                font-size: 1.8em; /* Slightly smaller heading */
+                margin-bottom: 0.8em;
+            }
+            form {
+                flex-direction: column; /* Stack form elements vertically */
+                gap: 15px; /* Adjust gap for vertical layout */
+                margin-bottom: 1.5em;
+            }
+            input[type="text"], button {
+                width: 100%; /* Make form elements full width */
+                box-sizing: border-box; /* Include padding/border in width */
+            }
+            .result-box {
+                font-size: 0.9em; /* Slightly smaller font in result box */
+            }
+        }
     </style>
 </head>
 <body>
