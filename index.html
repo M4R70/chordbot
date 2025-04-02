@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Scraper</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2em;
+        }
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result-box {
+            background-color: #e9ecef;
+            padding: 1em;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            min-height: 100px;
+            white-space: pre-wrap; /* Preserve whitespace and wrap */
+            word-wrap: break-word;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+            margin-top: 1em;
+        }
+        pre {
+            margin: 0; /* Reset default pre margin */
+            font-family: monospace; /* Use monospace font for chords */
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chord Scraper</h1>
+        <form method="POST">
+            <input type="text" name="query" placeholder="Enter Song Title and Artist (e.g., Wonderwall Oasis)" value="{{ query }}" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if result_html or error %}
+            <h2>Result:</h2>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            <div class="result-box">
+                {{ result_html }} {# result_html is already Markup safe #}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
